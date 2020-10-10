@@ -2,8 +2,8 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
-  <script src="../js/ValidateFieldsQuestion.js"></script>
   <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+  <script src="../js/ValidateFieldsQuestion.js"></script>
   <script src="../js/ShowImageInForm.js"></script>
 </head>
 <body>
@@ -11,29 +11,29 @@
   <section class="main" id="s1">
     <form id='fquestion' name='fquestion' action=’AddQuestion.php’ method="GET">
 
-      <label for="email"> Direccion de correo:</label>
-      <input type="text" size="50" id="email" name="email"><br><br>
+      <p><label for="email"> Direccion de correo:</label>
+      <input type="text" size="50" id="email" name="email"></p>
 
-      <label for="pregunta"> Enunciado de la Pregunta </label>
-      <input type="text" size="50" id="pregunta" name="pregunta"><br><br>
+      <p><label for="pregunta"> Enunciado de la Pregunta:</label>
+      <input type="text" size="44" id="pregunta" name="pregunta"></p>
 
-      <label for="resCorrecta"> Respuesta Correcta: </label>
-      <input type="text" size="50" id="resCorrecta" name="resCorrecta"><br><br>
+      <p><label for="resCorrecta"> Respuesta Correcta: </label>
+      <input type="text" size="50" id="resCorrecta" name="resCorrecta"></p>
 
-      <label for="resIncorrecta1"> Respuesta Incorrecta: </label>
-      <input type="text" size="50" id="resIncorrecta1" name="resIncorrecta1"><br><br>
+      <p><label for="resIncorrecta1"> Respuesta Incorrecta: </label>
+      <input type="text" size="48" id="resIncorrecta1" name="resIncorrecta1"></p>
 
-      <label for="resIncorrecta2"> Respuesta Incorrecta:</label>
-      <input type="text" size="50"id="resIncorrecta2" name="resIncorrecta2"><br><br>
+      <p><label for="resIncorrecta2"> Respuesta Incorrecta:</label>
+      <input type="text" size="48"id="resIncorrecta2" name="resIncorrecta2"></p>
 
-      <label for="resIncorrecta1"> Respuesta Incorrecta: </label>
-      <input type="text" size="50" id="resIncorrecta3" name="resIncorrecta3"><br><br>
+      <p><label for="resIncorrecta3"> Respuesta Incorrecta: </label>
+      <input type="text" size="48" id="resIncorrecta3" name="resIncorrecta3"></p>
 
-      <label for="tema"> Tema: </label>
-      <input type="text" size="50" id="tema" name="tema"><br><br>
+      <p><label for="tema"> Tema: </label>
+      <input type="text" size="64" id="tema" name="tema"></p>
 
-      <label for="complejidad"> Complejidad: </label>
-      <input type="text" size="20" id="complejidad" name="complejidad"><br><br>
+      <p><label for="complejidad"> Complejidad: </label>
+      <input type="text" size="20" id="complejidad" name="complejidad"></p>
 
       <input type="file" name="imagenPregunta" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/><br><br>
 

@@ -9,7 +9,8 @@ function showImage (){
     }
 
     reader.onloadend = function() {
-        $('#enviar').before('<img src="'+reader.result+'"width="250" height="250" ><br>');
+        $('#imgSubir').remove();
+        $('#enviar').before('<img src="'+reader.result+'"width="250" height="250" id="imgSubir" ><br>');
     }
 
 
