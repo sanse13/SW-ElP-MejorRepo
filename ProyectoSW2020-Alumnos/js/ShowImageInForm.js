@@ -10,7 +10,7 @@ function showImage (){
 
     reader.onloadend = function() {
         $('#imgSubir').remove();
-        $('#enviar').before('<img src="'+reader.result+'"width="250" height="250" id="imgSubir" ><br>');
+        $('#enviar').before('<img src="'+reader.result+'"width="250" height="250" id="imgSubir" >');
     }
 
 

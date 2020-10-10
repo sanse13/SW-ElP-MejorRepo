@@ -35,9 +35,9 @@
       <p><label for="complejidad"> Complejidad: </label>
       <input type="text" size="20" id="complejidad" name="complejidad"></p>
 
-      <input type="file" name="imagenPregunta" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/><br><br>
+      <input type="file" name="imagenPregunta" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/><br>
 
-      <input type="submit" value="Enviar Pregunta" id="enviar" onClick="return validarFormulario();"><br><br>
+      <br><input type="submit" value="Enviar Pregunta" id="enviar" onClick="return validarFormulario();"><br><br>
 
     </form>
   </section>

@@ -14,5 +14,5 @@ nav span             				{ margin: 0px 10px 0px 0px;
 						display: inline-block;}
 
 #ErrorMsgs          		 { color: #f61; font-size: smaler}
-#s1							{ overflow-y: scroll; margin-left: auto; margin-right: auto;}
+#s1							{ overflow-y: auto; margin-left: auto; margin-right: auto;}
 #fquestion p {padding: 5px;}
