@@ -65,15 +65,7 @@ $(document).ready(function(){
 })
 
 function validarFormulario(){
-
-    /*var vacios = validarCamposVacios() ;
-    var email =  validarEmail() ;
-    var complejidad =  validarComplejidad() ;
-    var longitudPreg = validarLongitudPregunta();
-
-    console.log(" vacios= "+vacios+" email: "+ email +" complejidad: " + complejidad +" longitud: " + longitudPreg);*/
-
-    return validarCamposVacios() && validarEmail() && validarComplejidad() && validarLongitudPregunta();
+    return !$('#ErrorMsgs').length;
 }
 
 function validarEmail(){
@@ -84,22 +76,7 @@ function validarEmail(){
     var email = $('#email').val();
 
 
-
     return expRegAlum.test(email) || expRegProf.test(email);
-}
-
-function validarCamposVacios(){
-
-    var email = $('#email').val();
-    var pregunta = $('#pregunta').val();
-    var resCorrecta = $('#resCorrecta').val();
-    var resIncorrecta1 = $('#resIncorrecta1').val();
-    var resIncorrecta2 = $('#resIncorrecta2').val();
-    var resIncorrecta3 = $('#resIncorrecta3').val();
-    var resIncorrecta4 = $('#resIncorrecta4').val();
-    var tema = $('#tema').val();
-
-    return !(email=="" || pregunta=="" || resCorrecta=="" || resIncorrecta1=="" || resIncorrecta2=="" || resIncorrecta3=="" || resIncorrecta4=="" || tema=="");
 }
 
 function validarComplejidad (){
