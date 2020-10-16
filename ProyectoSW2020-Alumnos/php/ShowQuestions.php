@@ -5,10 +5,16 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <?php include '../php/DataBaseConnection.php' ?>
   <section class="main" id="s1">
     <div>
-      Código PHP para mostrar una tabla con las preguntas de la BD.<br>
-      La tabla no incluye las imágenes
+
+      <?php
+
+        showDataTable();
+
+      ?>
+      
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

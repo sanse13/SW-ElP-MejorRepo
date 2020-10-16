@@ -4,12 +4,12 @@ if ($local==1){
     $server="localhost";
     $user="root";
     $pass="";
-    $basededatos="quiz";
+    $basededatos="Quiz";
 }
 else{
     $server="localhost";
-    $user="";
-    $pass="";
-    $basededatos="";
+    $user="id14922465_quizdbsw12";
+    $pass="mejordbSW12!";
+    $basededatos="id14922465_quizdb";
 }
 ?>

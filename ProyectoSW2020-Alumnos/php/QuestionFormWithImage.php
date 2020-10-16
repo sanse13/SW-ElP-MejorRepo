@@ -8,8 +8,9 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <?php include '../php/DataBaseConnection.php' ?>
   <section class="main" id="s1">
-    <form id='fquestion' name='fquestion' action=’AddQuestion.php’ method="GET">
+    <form id='fquestion' name='fquestion' action='AddQuestion.php' method="post">
 
       <p><label for="email"> Direccion de correo:</label>
       <input type="text" size="50" id="email" name="email"></p>
@@ -38,10 +39,11 @@
       <br><input type="file" name="imagenPregunta" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/>
 
 
-      <br><br><input type="submit" value="Enviar Pregunta" id="enviar" onClick="return validarFormulario();"><br><br>
+      <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick="return validarFormulario();"><br><br>
 
     </form>
   </section>
+ 
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
