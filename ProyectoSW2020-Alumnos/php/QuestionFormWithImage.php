@@ -10,7 +10,7 @@
   <?php include '../php/Menus.php' ?>
   <?php include '../php/DataBaseConnection.php' ?>
   <section class="main" id="s1">
-    <form id='fquestion' name='fquestion' action='AddQuestion.php' method="post">
+    <form id='fquestion' name='fquestion' action='AddQuestionWithImage.php' method="post" enctype="multipart/form-data">
 
       <p><label for="email"> Direccion de correo:</label>
       <input type="text" size="50" id="email" name="email"></p>

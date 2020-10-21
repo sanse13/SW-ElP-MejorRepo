@@ -1,3 +1,5 @@
+var campos = ["#email", "#pregunta", "#resCorrecta", "#resIncorrecta1", "#resIncorrecta2", "#resIncorrecta3", "#tema",
+"#complejidad"];
 
 $(document).ready(function(){
 
@@ -64,8 +66,18 @@ $(document).ready(function(){
 
 })
 
-function validarFormulario(){
-    return !$('#ErrorMsgs').length;
+function validarFormulario(){                             
+    return !$('#ErrorMsgs').length && validarVacios();
+}
+
+function validarVacios(){
+    var i;
+    console.log(campos.length)
+    for (i = 0; i < campos.length; i++){
+        console.log(campos[i]);
+        if ($(campos[i]).val() == "") return false;
+    }
+    return true;
 }
 
 function validarEmail(){
