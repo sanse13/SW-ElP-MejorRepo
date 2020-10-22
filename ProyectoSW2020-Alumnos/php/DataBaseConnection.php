@@ -1,32 +1,14 @@
 
-<?php include "DbConfig.php"?>
 <?php 
     
 
     /* establece conexion con la BD */
 
-    function setConnection(){
-     
-      /*$dbLink = "localhost";
-      $dbUser = "id14922465_quizdbsw12";
-      $dbPass = "mejordbSW12!";
-      $dbName = "id14922465_quizdb";*/
-      
-      $mysqli = mysqli_connect("localhost" , "root", "", "Quiz");
-      //$mysqli = mysqli_connect($server , $user, $pass, $basededatos);
-
-      if (!$mysqli){
-        die("Fallo al conectar a MySQL: ".mysqli_connect_error());
-        //echo 'Fallo al conectar';
-      }
-
-      $test = "Conexion establecida";
-      //echo $test;
-      return $mysqli;
-    }
+    
 
     /* inserta la tupla en la tabla Preguntas */
 
+    
     function insertData(){
       $link = setConnection();
 
@@ -48,7 +30,6 @@
         mysqli_close($link);
       } else echo 'Ha fallado';
     }
-
 
     /* obtiene en un array los datos de la tabla Preguntas de nuestra BD */
 

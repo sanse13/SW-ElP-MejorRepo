@@ -11,9 +11,12 @@
     
     <?php
 
+
+      
+      
+      
+
     
-    //setConnection();
-    insertData();    
 
     ?>
   <br>
