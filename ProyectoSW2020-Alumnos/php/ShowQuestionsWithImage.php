@@ -6,36 +6,35 @@
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <div>
+    <div >
       <?php
 
         include "DbConfig.php";
-                      
+
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
         if (!$mysqli){
-          die("Fallo al conectar a MySQL: ".mysqli_connect_error());
-          //echo 'Fallo al conectar';
+          exit('<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>');
         }
-
-        echo 'Conexion establecida';
 
         $query = "SELECT correo, enunciado, resOK, imagen  FROM Preguntas";
 
-        /* el objeto res contiene los datos de la tabla Preguntas */
         $res = mysqli_query($mysqli, $query);
 
-        echo '<table border=1><tr> <th> AUTOR </th> <th> ENUNCIADO </th> <th> RESPUESTA </th> <th> IMAGEN </th> </tr>';
+        if(!$res){
+          exit('<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>');
+        }
 
-        /* en este bucle recorro la info mientras lo inserto en una tabla */
+        echo '<table border=1 id="showQuestionTable"><tr> <th> AUTOR </th> <th> ENUNCIADO </th> <th> RESPUESTA </th> <th> IMAGEN </th> </tr>';
+
         while ($row = mysqli_fetch_array($res))
           echo '<tr>
                     <td>' .$row['correo'].'</td>
                     <td>' .$row['enunciado'].'</td>
                     <td>' .$row['resOK'] .'</td>
-                    <td> <img width="100px" height="100px" src="'.$row['imagen'].'" </td>
+                    <td> <img width="200px" height="200px" src="'.$row['imagen'].'" </td>
                 </tr>';
-  
+
         echo '</table>';
 
 

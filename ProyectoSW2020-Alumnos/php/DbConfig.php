@@ -2,9 +2,9 @@
 
 /* 1 => local, 0 => 000webhotst */
 
-$local=0; //0 para la nube
+$local=1; //0 para la nube
 
-if ($local==1){
+if ($local==0){
     $server="localhost";
     $user="root";
     $pass="";

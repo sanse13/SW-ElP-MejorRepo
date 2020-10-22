@@ -5,22 +5,15 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
-  <?php include '../php/DataBaseConnection.php'?>
   <section class="main" id="s1">
     <div>
-    
+
     <?php
 
 
-      
-      
-      
-
-    
-
     ?>
   <br>
-  <a href="../php/ShowQuestions.php">Ver preguntas de la DataBase</a> 
+  <a href="../php/ShowQuestions.php">Ver preguntas de la DataBase</a>
 
     </div>
   </section>
