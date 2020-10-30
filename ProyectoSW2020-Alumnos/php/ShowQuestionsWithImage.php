@@ -32,7 +32,7 @@
                     <td>' .$row['correo'].'</td>
                     <td>' .$row['enunciado'].'</td>
                     <td>' .$row['resOK'] .'</td>
-                    <td> <img width="200px" height="200px" src="'.$row['imagen'].'" </td>
+                    <td> <img width="80px" height="80px" src="'.$row['imagen'].'" </td>
                 </tr>';
 
         echo '</table>';
