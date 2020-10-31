@@ -11,6 +11,27 @@
 			<?php
         include "DbConfig.php";
 
+        $email = $_POST['email'];
+        $pregunta = $_POST['pregunta'];
+        $resCorrecta = $_POST['resCorrecta'];
+        $resIncorrecta1 = $_POST['resIncorrecta1'];
+        $resIncorrecta2 = $_POST['resIncorrecta2'];
+        $resIncorrecta3 = $_POST['resIncorrecta3'];
+        $tema = $_POST['tema'];
+        $complejidad = $_POST['complejidad'];
+
+        // Validacion de datos
+        $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/", $email);
+        $esProfesor = preg_match("/^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email);
+        if(!($esAlumno || $esProfesor)){
+          exit('<p style="color:red;"> El email no es valido </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>');
+        }
+
+        if($email=="" || $pregunta=="" || $resCorrecta=="" || $resIncorrecta1=="" || $resIncorrecta2=="" || $resIncorrecta3=="" || $resIncorrecta4=="" || $tema==""){
+          exit('<p style="color:red;"> No pues haber ningun campo vacio </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>');
+        }
+
+
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
         if (!$mysqli){
@@ -28,15 +49,6 @@
         }else{
           $path = "../images/noimage.png";
         }
-
-        $email = $_POST['email'];
-        $pregunta = $_POST['pregunta'];
-        $resCorrecta = $_POST['resCorrecta'];
-        $resIncorrecta1 = $_POST['resIncorrecta1'];
-        $resIncorrecta2 = $_POST['resIncorrecta2'];
-        $resIncorrecta3 = $_POST['resIncorrecta3'];
-        $tema = $_POST['tema'];
-        $complejidad = $_POST['complejidad'];
 
         $query = "INSERT INTO Preguntas(correo, enunciado, resOK, resF1, resF2, resF3, tema, complejidad, imagen)
                 VALUES ('$email', '$pregunta', '$resCorrecta', '$resIncorrecta1', '$resIncorrecta2', '$resIncorrecta3', '$tema', '$complejidad', '$path')";

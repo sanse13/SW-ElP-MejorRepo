@@ -38,7 +38,7 @@
       <br><input type="file" name="imagenPregunta" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/>
 
 
-      <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick="return validar()"><br><br>
+      <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick=""><br><br>
 
     </form>
   </section>
