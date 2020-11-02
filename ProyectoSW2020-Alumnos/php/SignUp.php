@@ -56,16 +56,11 @@
         ?>
 
 
-
-
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
-
-
-
 
 <?php
     function registrar(){
@@ -76,8 +71,7 @@
 
             $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";
 
-            if($nombre_campo != "submit" && $valor=="") exit('<p style="color:red;"> No puede haber campos vacios </p> <br>');
-            //echo $asignacion;
+            if($nombre_campo != "submit" && $valor=="") return('<p style="color:red;"> No puede haber campos vacios </p> <br>');
             eval($asignacion);
         }
 
@@ -86,20 +80,24 @@
         $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/",$email);
 
 
+        //Validacion de profesor
         if($tipoUser == "profesor" &&  !$esProfesor){
             return '<p style="color:red;"> El email no tiene formato profesor</p> <br>';
         }
 
+        //Validacion de alumno
         if($tipoUser == "alumno" &&  !$esAlumno){
             return'<p style="color:red;"> El email no tiene formato alumno</p> <br>';
         }
 
+        //Validacion de nombre y apellidos
         if(str_word_count($nombeYApellidos) < 2) return'<p style="color:red;"> El nombre y apellido son incorrectos </p> <br>';
 
+        //Validacion de password
         if($password != $repPassword) return '<p style="color:red;"> El password debe coincidir </p> <br>';
 
+        //Validacion de long de password
         if(strlen($password) < 6) return '<p style="color:red;"> La longitud del password debe ser mayor que 5 </p> <br>';
-        //////////////////////////////////////////////////////////////////////////////
 
 
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
