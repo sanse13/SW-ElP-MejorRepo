@@ -9,14 +9,6 @@ $(document).ready(function(){
 
     });
 
-    $('#email').blur(function (){
-        if( $('#email').val() == "") $('#email').after('<p class="ErrorMsgs"> Este campo no puede estar vacio </p>');
-        else if(!validarEmail()) $('#email').after('<p class="ErrorMsgs"> El email no es valido </p>');
-    });
-    $('#email').focus(function(){
-        $('#email').next("p").remove();
-    });
-
     $('#resCorrecta').blur(function (){
         if( $('#resCorrecta').val() == "") $('#resCorrecta').after('<p class="ErrorMsgs"> Este campo no puede estar vacio </p>');
     });
@@ -81,13 +73,12 @@ function validarCamposVacios(){
     var resIncorrecta1 = $('#resIncorrecta1').val();
     var resIncorrecta2 = $('#resIncorrecta2').val();
     var resIncorrecta3 = $('#resIncorrecta3').val();
-    var resIncorrecta4 = $('#resIncorrecta4').val();
     var tema = $('#tema').val();
 
     return !(email=="" || pregunta=="" || resCorrecta=="" || resIncorrecta1=="" || resIncorrecta2=="" || resIncorrecta3=="" || resIncorrecta4=="" || tema=="");
 }
 
-function validarEmail(){
+/*function validarEmail(){
 
     var expRegAlum = new RegExp('^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$');
     var expRegProf = new RegExp('^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$');
@@ -96,7 +87,7 @@ function validarEmail(){
 
 
     return expRegAlum.test(email) || expRegProf.test(email);
-}
+} */
 
 function validarComplejidad (){
     var expNumComplejidad = new RegExp('^[123]$');

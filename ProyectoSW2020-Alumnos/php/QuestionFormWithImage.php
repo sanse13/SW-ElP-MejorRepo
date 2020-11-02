@@ -3,16 +3,20 @@
 <head>
   <?php include '../html/Head.html'?>
   <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
-  <script src="../js/ValidateFieldsQuestion.js"></script>
+  <!--<script src="../js/ValidateFieldsQuestion.js"></script>-->
   <script src="../js/ShowImageInForm.js"></script>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <form id='fquestion' name='fquestion' action='AddQuestionWithImage.php' method="post" enctype="multipart/form-data">
+    <form id='fquestion' name='fquestion' action=<?='AddQuestionWithImage.php?email='.$_GET['email']?> method="post" enctype="multipart/form-data">
+
+      <?php 
+      
+      $email = $_GET['email']; ?>
 
       <p><label for="email"> Direccion de correo:</label>
-      <input type="text" size="50" id="email" name="email"></p>
+      <input type="text" size="50" id="email" name="email" value=<?=$email?> ></p>
 
       <p><label for="pregunta"> Enunciado de la Pregunta:</label>
       <input type="text" size="44" id="pregunta" name="pregunta"></p>
@@ -40,9 +44,17 @@
 
       <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick=""><br><br>
 
+      
+
     </form>
   </section>
 
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
+
+<?php
+
+
+
+?>

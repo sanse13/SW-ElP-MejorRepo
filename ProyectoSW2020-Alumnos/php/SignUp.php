@@ -77,7 +77,7 @@
             $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";
 
             if($nombre_campo != "submit" && $valor=="") exit('<p style="color:red;"> No puede haber campos vacios </p> <br>');
-            echo $asignacion;
+            //echo $asignacion;
             eval($asignacion);
         }
 
@@ -94,7 +94,7 @@
             return'<p style="color:red;"> El email no tiene formato alumno</p> <br>';
         }
 
-        if(strlen($nombeYApellidos) < 2) return'<p style="color:red;"> El nombre y apellido son incorrectos </p> <br>';
+        if(str_word_count($nombeYApellidos) < 2) return'<p style="color:red;"> El nombre y apellido son incorrectos </p> <br>';
 
         if($password != $repPassword) return '<p style="color:red;"> El password debe coincidir </p> <br>';
 
