@@ -25,6 +25,7 @@
             <span><a href='Layout.php".$urlEmail. "'>Inicio</a></span>
             <span><a href='QuestionFormWithImage.php".$urlEmail. "'> Insertar Pregunta</a></span>
             <span><a href='ShowQuestionsWithImage.php".$urlEmail. "'> Ver Preguntas</a></span>
+            <span><a href='ShowXmlQuestions.php".$urlEmail. "'> Ver Preguntas XML</a></span>
             <span><a href='Credits.php".$urlEmail. "'>Creditos</a></span>
           </nav> ");
 

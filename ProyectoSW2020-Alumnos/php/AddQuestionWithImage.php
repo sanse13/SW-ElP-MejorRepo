@@ -11,6 +11,10 @@
 			<?php
         include "DbConfig.php";
 
+        /* cargar fichero Questions.xml y leerlo */
+        $questions_path = "../xml/Questions.xml";
+        $xml = simplexml_load_file($questions_path) or die("Error: No se puede insertar en el xml");
+
         $email = $_POST['email'];
         $pregunta = $_POST['pregunta'];
         $resCorrecta = $_POST['resCorrecta'];
@@ -62,7 +66,25 @@
 
         mysqli_close($mysqli);
 
-        echo ("La pregunta se guarda correctamente <br><a href='ShowQuestionsWithImage.php".$urlBack."'> Ver preguntas de la DataBase </a>");
+        $new_assesment = $xml->addChild('assessmentItem');
+        $new_assesment -> addAttribute('subject', $tema);
+        $new_assesment -> addAttribute('author', $email);
+        $nueva_pregunta = $new_assesment -> addChild('itemBody');
+        $nueva_pregunta -> addChild('p', $pregunta);
+        $correct_response = $new_assesment -> addChild('correctResponse');
+        $correct_response -> addChild('response', $resCorrecta);
+        $respuestas_incorrectas = $new_assesment -> addChild('incorrectResponses');
+        $respuestas_incorrectas -> addChild('response', $resIncorrecta1);
+        $respuestas_incorrectas -> addChild('response', $resIncorrecta2);
+        $respuestas_incorrectas -> addChild('response', $resIncorrecta3);
+
+        $xml->asXML('../xml/Questions.xml');
+
+        echo 'La pregunta se ha guardado correctamente en el fichero XML <br>';
+
+        echo ("La pregunta se guarda correctamente en la Base de Datos<br><a href='ShowQuestionsWithImage.php".$urlBack."'> Ver preguntas de la DataBase </a><br>");
+
+        echo '<a href=ShowXmlQuestions.php' .$urlBack .'> Ver preguntas XML </a>';
 
       ?>
     </div>
