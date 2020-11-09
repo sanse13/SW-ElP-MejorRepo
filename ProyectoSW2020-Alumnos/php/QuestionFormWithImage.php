@@ -11,8 +11,8 @@
   <section class="main" id="s1">
     <form id='fquestion' name='fquestion' action=<?='AddQuestionWithImage.php?email='.$_GET['email']?> method="post" enctype="multipart/form-data">
 
-      <?php 
-      
+      <?php
+
       $email = $_GET['email']; ?>
 
       <p><label for="email"> Direccion de correo:</label>
@@ -44,7 +44,7 @@
 
       <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick=""><br><br>
 
-      
+
 
     </form>
   </section>
@@ -52,9 +52,3 @@
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
-
-<?php
-
-
-
-?>

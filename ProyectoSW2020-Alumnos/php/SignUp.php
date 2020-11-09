@@ -61,7 +61,6 @@
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
-
 <?php
     function registrar(){
 
