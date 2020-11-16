@@ -1,4 +1,12 @@
 
+<script src="../js/DecreaseCounterAjax.js"></script>
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="../js/ShowImageInForm.js"></script>
+  <script src="../js/ShowQuestionsAjax.js"></script>
+  <script src="../js/AddQuestionsAjax.js"></script>
+  <script src="../js/CountQuestions.js"></script>
+  <script src="../js/CountUsersAjax.js"></script>
+
 <?php
 
     if(isset($_GET['email'])){
@@ -7,6 +15,7 @@
       include "DbConfig.php";
 
         $urlEmail = "?email=" . $_GET['email'];
+        $email =  '"'.$_GET['email'].'"';
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
         $query = "SELECT Imagen FROM Usuarios WHERE Email = '$_GET[email]'";
         $res = mysqli_query($mysqli, $query);
@@ -15,7 +24,7 @@
         echo("
           <div id='page-wrap'>
           <header class='main' id='h1'>
-              <span class='right'><a href='LogOut.php'>Logout</a></span>
+              <span class='right'><a href='#' onclick='decreaseCounter(".$email.")'>Logout</a></span>
               <span class='right'>". $_GET['email']."</span>
               <img src='" . $path['Imagen'] . "' width='50px' height='50px'>
 

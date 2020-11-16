@@ -18,3 +18,25 @@ nav span             				{ margin: 0px 10px 0px 0px;
 #fquestion p {padding: 0.3em;}
 #showQuestionTable tr td {padding: 0.5em; white-space: pre-line}
 #showQuestionTable {margin: 0 auto;}
+
+.questionsTable {
+	border: 1px solid #1C6EA4;
+	background-color: #EEEEEE;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+  }
+.questionsTable td, table.questionsTable th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+  }
+.questionsTable tbody td {
+	font-size: 13px;
+  }
+.questionsTable tr {
+	background: #D0E4F5;
+  }
+
+.questionsTable tr:first-child{
+	background: #cfa51b;
+  }

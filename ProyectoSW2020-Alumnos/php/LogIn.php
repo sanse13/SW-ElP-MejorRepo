@@ -17,9 +17,16 @@
 
         <?php
                 include "DbConfig.php";
+                include "IncreaseGlobalCounter.php";
+                include "ComprobarUsuario.php";
+
+
+
                 if(isset($_POST['submit'])){
 
-
+                    if(esUsuarioLogeado($_POST['email'])){
+                        exit ('<p style="color:red;"> El usuario ya esta logeado</p> <br>');
+                    }
 
                     $mysqli = @mysqli_connect($server, $user, $pass, $basededatos);
 
@@ -41,6 +48,7 @@
                     }else{
                         //echo("<script> alert('Bienvenido: ". $row['NombreApellidos']."'); window.location.replace = 'adgasdfas'</script>");
                         $urlUser = "?nombre=".$row['NombreApellidos']."&email=".$row['Email'];
+                        increaseGlobalCounter();
                         echo $urlUser;
                         header("Location: Layout.php".$urlUser);
                     }
@@ -50,9 +58,13 @@
 
 
 
+
+
             }
 
         ?>
+
+
 
     </div>
   </section>

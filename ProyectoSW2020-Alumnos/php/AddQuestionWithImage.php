@@ -7,6 +7,7 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <?php
+    header("Cache-Control: no-store");
     $mensajeInsertarEnBD = insertarPreguntaBD();
     $mensajeInsertarEnXML = insertarPreguntaXML();
 
@@ -32,7 +33,7 @@
       $resIncorrecta3 = $_POST['resIncorrecta3'];
       $tema = $_POST['tema'];
       $complejidad = $_POST['complejidad'];
-      $urlBack = "?email=".$_GET['email'];
+      $urlBack = "?email=".$email;
 
 
       // Validacion de tipo de usuario
@@ -90,7 +91,7 @@
       $resIncorrecta3 = $_POST['resIncorrecta3'];
       $tema = $_POST['tema'];
       $complejidad = $_POST['complejidad'];
-      $urlBack = "?email=".$_GET['email'];
+      $urlBack = "?email=".$email;
 
 
       /* cargar fichero Questions.xml y leerlo */
