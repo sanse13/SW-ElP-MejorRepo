@@ -7,7 +7,6 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <?php
-    header("Cache-Control: no-store");
     $mensajeInsertarEnBD = insertarPreguntaBD();
     $mensajeInsertarEnXML = insertarPreguntaXML();
 

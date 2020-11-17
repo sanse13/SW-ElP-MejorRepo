@@ -1,4 +1,3 @@
-
 <?php
     header("Cache-Control: no-store");
     $mensajeInsertarEnBD = insertarPreguntaBD();

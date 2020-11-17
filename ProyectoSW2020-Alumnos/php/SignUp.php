@@ -78,7 +78,6 @@
         $esProfesor = preg_match("/^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email);
         $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/",$email);
 
-        undefined
         //Validacion de profesor
         if($tipoUser == "profesor" &&  !$esProfesor){
             return '<p style="color:red;"> El email no tiene formato profesor</p> <br>';

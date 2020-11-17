@@ -49,7 +49,7 @@
                         //echo("<script> alert('Bienvenido: ". $row['NombreApellidos']."'); window.location.replace = 'adgasdfas'</script>");
                         $urlUser = "?nombre=".$row['NombreApellidos']."&email=".$row['Email'];
                         increaseGlobalCounter();
-                        echo $urlUser;
+                        //echo $urlUser;
                         echo "<script>window.location='Layout.php".$urlUser."'</script>";
                     }
 
