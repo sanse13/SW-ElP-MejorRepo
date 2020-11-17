@@ -48,11 +48,8 @@
       <br><br><input type="button" name="submit" value="Insertar Pregunta" id="enviar" onClick="addQuestion()">
       <input type="button" name="verPreguntas" value="Ver Preguntas" id="verPreguntas" onClick="showQuestions()">
       <input type="button" name="resetForm" value="Reset Form" id="resetForm" onClick="formReset()"><br><br>
-      <table class="questionsTable"></table>
-
-
-
-
+      <div id="res"></div><br>
+      <table class="questionsTable"></table><br><br>
 
 
     </form>

@@ -1,7 +1,6 @@
 $(document).ready(function(){
-    console.log("HOLA");
     countQuestions();
-    setInterval(countQuestions,3000);
+    setInterval(countQuestions,5000);
 
 
 });

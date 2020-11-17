@@ -1,6 +1,6 @@
 $(document).ready(function(){
     countUsers();
-    setInterval(countUsers,3000);
+    setInterval(countUsers,5000);
 
 });
 

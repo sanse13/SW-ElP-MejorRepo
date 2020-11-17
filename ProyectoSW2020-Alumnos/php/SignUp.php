@@ -33,7 +33,7 @@
 
             <br><input type="file" name="imagenUser" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/>
 
-            <br><br><input type="submit" name="submit" value="Enviar Pregunta" id="enviar" onClick=""><br><br>
+            <br><br><input type="submit" name="submit" value="Registrar" id="enviar" onClick=""><br><br>
 
         </form>
 
@@ -45,7 +45,7 @@
                 $error = registrar();
 
                 if($error == ""){
-                     header('Location: LogIn.php');
+                    echo "<script>window.location.href='LogIn.php'</script>";
                 }else{
                     echo ('<p style="color:red;">'. $error .'</p> <br>');
                 }
@@ -78,7 +78,7 @@
         $esProfesor = preg_match("/^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email);
         $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/",$email);
 
-
+        undefined
         //Validacion de profesor
         if($tipoUser == "profesor" &&  !$esProfesor){
             return '<p style="color:red;"> El email no tiene formato profesor</p> <br>';

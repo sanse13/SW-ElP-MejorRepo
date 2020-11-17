@@ -1,48 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ShowXmlQuestions.xsl" ?>
 <assessmentItems>
-	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Tag HTML para añadir un formulario</p>
-		</itemBody>
-		<correctResponse>
-			<response>
-				FORM
-			</response>
-		</correctResponse>
-		<incorrectResponses>
-			<response> OBJECT </response>
-			<response> TABLE </response>
-			<response> DIV </response>
-		</incorrectResponses>
-	</assessmentItem>
-
-	<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Este protocolo acabará funcionando
-			incluso entre dos latas unidas por un cordón</p>
-		</itemBody>
-		<correctResponse>
-			<response>
-				TCP/IP
-			</response>
-		</correctResponse>
-		<incorrectResponses>
-			<response> HTTP </response>
-			<response> SMTP </response>
-			<response> Ninguna es correcta </response>
-		</incorrectResponses>
-	</assessmentItem>
-
-	<assessmentItem subject="a" author="asansegundo002@ikasle.ehu.eus">
-		<itemBody><p>prueba con xml</p></itemBody>
-		<correctResponse>
-			<response>a</response>
-		</correctResponse>
-		<incorrectResponses>
-		<response>aa</response>
-		<response>a</response>
-		<response>a</response>
-		</incorrectResponses>
-	</assessmentItem>
-<usuario email=""/><assessmentItem subject="a" author="aalonzso213@ikasle.ehu.eus"><itemBody><p>esto es una prueba</p></itemBody><correctResponse><response>a</response></correctResponse><incorrectResponses><response>a</response><response>a</response><response>a</response></incorrectResponses></assessmentItem><assessmentItem subject="A" author="aalonzso213@ikasle.ehu.eus"><itemBody><p>AAAAAAAAAAAAAAAA</p></itemBody><correctResponse><response>A</response></correctResponse><incorrectResponses><response>A</response><response>A</response><response>A</response></incorrectResponses></assessmentItem></assessmentItems>
+</assessmentItems>

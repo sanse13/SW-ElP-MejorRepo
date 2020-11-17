@@ -12,7 +12,7 @@
         <h2>Identificación de usuario </h2>
             <p> Email   : <input type="email"  name="email" size="21" value="" />
             <p> Password: <input type="password"  name="pass" size="21" value="" />
-            <p> <input id="input_2" type="submit" name="submit" />
+            <p> <input id="input_2" type="submit" name="submit" value="Login" />
         </form>
 
         <?php
@@ -50,7 +50,7 @@
                         $urlUser = "?nombre=".$row['NombreApellidos']."&email=".$row['Email'];
                         increaseGlobalCounter();
                         echo $urlUser;
-                        header("Location: Layout.php".$urlUser);
+                        echo "<script>window.location='Layout.php".$urlUser."'</script>";
                     }
 
                     mysqli_close($mysqli);

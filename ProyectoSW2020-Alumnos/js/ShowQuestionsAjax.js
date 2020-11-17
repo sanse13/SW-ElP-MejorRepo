@@ -2,19 +2,21 @@ function showQuestions(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
+
             printQuestions(this);
 
         }
     }
     xhttp.open("GET", "../xml/Questions.xml",);
     xhttp.send();
+
 }
 
 
 function printQuestions(xml){
     var i;
     var xmlQuestions = xml.responseXML;
-    var table = "<tr><th>Autor</th><th>Anunciado</th><th>Respuesta Correcta</th</tr>";
+    var table = "<tr><th>Autor</th><th>Enunciado</th><th>Respuesta Correcta</th</tr>";
     var assessmentItem = xmlQuestions.getElementsByTagName("assessmentItem");
     var itemBody = xmlQuestions.getElementsByTagName('itemBody');
     var correctResponse = xmlQuestions.getElementsByTagName('correctResponse');
@@ -46,7 +48,6 @@ function formReset(){
     $("#complejidad").val("");
     $("#subirImagen").val("");
     $("#imgSubir").remove();
-
-
+    $("#res").empty();
 
 }

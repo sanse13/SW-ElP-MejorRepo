@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <?php include '../html/Head.html'?>
-</head>
-<body>
-  <?php include '../php/Menus.php' ?>
-  <section class="main" id="s1">
-    <?php
+
+<?php
     header("Cache-Control: no-store");
     $mensajeInsertarEnBD = insertarPreguntaBD();
     $mensajeInsertarEnXML = insertarPreguntaXML();
@@ -14,11 +7,7 @@
     echo($mensajeInsertarEnBD);
     echo($mensajeInsertarEnXML);
 
-    ?>
-  </section>
-  <?php include '../html/Footer.html' ?>
-</body>
-</html>
+?>
 <?php
 
 
@@ -40,19 +29,19 @@
       $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/", $email);
       $esProfesor = preg_match("/^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email);
       if(!($esAlumno || $esProfesor)){
-        return "<p id='msgBD' style='color:red;'> El email no es valido </p> <br> <a href='QuestionFormWithImage.php".$urlBack."'> Volver a la pagina principal </a>";
+        return "<p id='msgBD' style='color:red;'> El email no es valido </p>";
       }
 
       //Validacion campos vacios
       if($email=="" || $pregunta=="" || $resCorrecta=="" || $resIncorrecta1=="" || $resIncorrecta2=="" || $resIncorrecta3=="" || $tema==""){
-        return "<p id='msgBD' style='color:red;'> No puedes haber ningun campo vacio </p> <br> <a href='QuestionFormWithImage.php".$urlBack."'> Volver a la pagina principal </a>";
+        return "<p id='msgBD' style='color:red;'> No puedes haber ningun campo vacio </p>";
       }
 
 
       $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
       if (!$mysqli){
-        return "<p id='msgBD' style='color:red;'> Ha ocurrido un error inesperado </p> <br> <a href='QuestionFormWithImage.php".$urlBack."'> Volver a la pagina principal </a>";
+        return "<p id='msgBD' style='color:red;'> Ha ocurrido un error inesperado </p>";
       }
 
       if(!empty($_FILES['imagenPregunta']['tmp_name'])){
@@ -60,7 +49,7 @@
         $path = "../images/preguntas/" . strtotime('now') . "_" . $_FILES['imagenPregunta']['name'];
 
         if(!move_uploaded_file($_FILES['imagenPregunta']['tmp_name'], $path)) {
-          return "<p id='msgBD' style='color:red;'>Error al subir la imagen, porfavor introduzca la pregunta de nuevo </p> <br> <a href='QuestionFormWithImage.php".$urlBack."'> Insertar pregunta </a>";
+          return "<p id='msgBD' style='color:red;'>Error al subir la imagen, porfavor introduzca la pregunta de nuevo </p>";
 
         }
 
@@ -72,7 +61,7 @@
               VALUES ('$email', '$pregunta', '$resCorrecta', '$resIncorrecta1', '$resIncorrecta2', '$resIncorrecta3', '$tema', '$complejidad', '$path')";
 
       if(!mysqli_query($mysqli, $query)){
-        return "<p id='msgBD' style='color:red;'>  Ha ocurrido un error inesperado </p> <br> <a href='QuestionFormWithImage.php".$urlBack."'> Volver a la pagina principal </a>";
+        return "<p id='msgBD' style='color:red;'>  Ha ocurrido un error inesperado </p>";
       }
 
       mysqli_close($mysqli);
@@ -94,7 +83,7 @@
       $urlBack = "?email=".$email;
 
       if($email=="" || $pregunta=="" || $resCorrecta=="" || $resIncorrecta1=="" || $resIncorrecta2=="" || $resIncorrecta3=="" || $tema==""){
-        return "<p id='msgXML' style='color:red;'> No puedes haber ningun campo vacio </p> ";;
+        return "";;
       }
 
       /* cargar fichero Questions.xml y leerlo */
