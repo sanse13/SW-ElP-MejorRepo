@@ -4,7 +4,13 @@
   <?php include '../html/Head.html'?>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
+  <?php include '../php/Menus.php';
+
+  require_once('../lib/nusoap.php');
+  require_once('../lib/class.wsdlcache.php');
+
+  
+  ?>
   <section class="main" id="s1">
     <div>
     <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
@@ -12,30 +18,79 @@
 
         <form id='fquestion' name='login' action='' method="post" enctype="multipart/form-data">
 
+            <span>
+                <input type="radio" id="rdbProfesor" name="tipoUser" value="profesor">
+                <label for="rdbProfesor">Profesor</label>
+                <input type="radio" id="rbtAlumno" name="tipoUser" value="alumno" checked>
+                <label for="rbtAlumno">Alumno</label>
+            </span><br><br>
+
+
             <p><label for="email"> Direccion de correo:</label>
-            <input type="text" size="50" id="email" name="email"></p>
+            <input type="text" size="50" id="email" name="email" onblur="emailVIP()"></p>
+
+            <input type='hidden' id='emailVip' name='emailVip'/>
+            <label id='vipEmail'></label>
 
             <p><label for="nombeYApellidos"> Nombre y Apellidos:</label>
             <input type="text" size="44" id="nombeYApellidos" name="nombeYApellidos"></p>
 
             <p><label for="password"> Password: </label>
-            <input type="password" size="50" id="password" name="password"></p>
+            <input type="password" size="50" id="password" name="password" onblur="validarPass()"></p>
+
+            <input type='hidden' id='validPass' name='validPass'/>
+            <label id="passValida" name="passValida"></label>
 
             <p><label for="repPassword"> Repetir Password: </label>
             <input type="password" size="50" id="repPassword" name="repPassword"></p><br>
-
-            <span>
-                <input type="radio" id="rdbProfesor" name="tipoUser" value="profesor" checked>
-                <label for="rdbProfesor">Profesor</label>
-                <input type="radio" id="rbtAlumno" name="tipoUser" value="alumno">
-                <label for="rbtAlumno">Alumno</label>
-            </span><br>
 
             <br><input type="file" name="imagenUser" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/>
 
             <br><br><input type="submit" name="submit" value="Registrar" id="enviar" onClick=""><br><br>
 
         </form>
+
+        <script>
+    function emailVIP(){
+
+    var fd = new FormData();
+    fd.append( 'email', $("#email").val());
+
+        $.ajax({
+
+            url: 'ClientVerifyEnrollment.php',
+            data: fd,
+            processData: false,
+            contentType: false,
+            cache: false,
+            type: 'POST',
+            success: function(data){
+                $('#vipEmail').html(data);
+            }
+        });
+    }
+
+    function validarPass(){
+        var fd = new FormData();
+        fd.append( 'password', $("#password").val());
+
+            $.ajax({
+
+                url: 'ClientVerifyPass.php',
+                data: fd,
+                processData: false,
+                contentType: false,
+                cache: false,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                    $("#passValida").html(data);
+                }
+            });
+    }
+   
+        </script>
+
 
         <?php
 
@@ -97,11 +152,13 @@
         //Validacion de long de password
         if(strlen($password) < 6) return '<p style="color:red;"> La longitud del password debe ser mayor que 5 </p> <br>';
 
-
+        if ($emailVip == 'NO') return '<p style="color:red;"> El email tiene que ser VIP </p> <br>';
+        
+        if($validPass == 'INVALIDA') return '<p style="color:red;"> La contraseña tiene que ser valida </p> <br>';
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
         if (!$mysqli){
-            return '<p style="color:red;"> Ha ocurrido un error inesperado 1</p> <br> <a href="Layout.php"> Volver a la pagina principal </a>';
+            return '<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>';
         }
 
 
@@ -139,3 +196,4 @@
     }
 
 ?>
+
