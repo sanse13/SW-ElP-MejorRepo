@@ -15,7 +15,7 @@
     
     function ObtenerPregunta ($id){
     	
-        include "DBConfig.php";
+        include "DbConfig.php";
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
         $query = "SELECT id, correo, enunciado, resOK FROM Preguntas WHERE id = $id";

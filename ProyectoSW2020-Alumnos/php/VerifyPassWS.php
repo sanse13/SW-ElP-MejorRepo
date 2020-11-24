@@ -14,7 +14,8 @@
     $ns);
     
     function validatePass ($pass, $ticket){
-    	
+        
+        
     	if($ticket != '1010') return 'SIN SERVICIO';
     	
     	else{

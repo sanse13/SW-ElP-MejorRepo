@@ -15,6 +15,8 @@
     <div>
     <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="../js/ShowImageInForm.js"></script>
+    <script src="../js/ClientVerifyEnrollmentAjax.js"></script>
+    <script src="../js/ClientVerifyPassAjax.js"></script>
 
         <form id='fquestion' name='login' action='' method="post" enctype="multipart/form-data">
 
@@ -27,69 +29,30 @@
 
 
             <p><label for="email"> Direccion de correo:</label>
-            <input type="text" size="50" id="email" name="email" onblur="emailVIP()"></p>
+            <input type="text" size="50" id="email" name="email" ></p>
 
-            <input type='hidden' id='emailVip' name='emailVip'/>
-            <label id='vipEmail'></label>
+
 
             <p><label for="nombeYApellidos"> Nombre y Apellidos:</label>
             <input type="text" size="44" id="nombeYApellidos" name="nombeYApellidos"></p>
 
             <p><label for="password"> Password: </label>
-            <input type="password" size="50" id="password" name="password" onblur="validarPass()"></p>
+            <input type="password" size="50" id="password" name="password" ></p>
 
-            <input type='hidden' id='validPass' name='validPass'/>
-            <label id="passValida" name="passValida"></label>
+
+            
+
+            
 
             <p><label for="repPassword"> Repetir Password: </label>
             <input type="password" size="50" id="repPassword" name="repPassword"></p><br>
 
             <br><input type="file" name="imagenUser" id="subirImagen" accept=".jpeg,.jpg,.png" onChange="showImage()"/>
 
-            <br><br><input type="submit" name="submit" value="Registrar" id="enviar" onClick=""><br><br>
+            <br><br><input type="submit" name="submit" value="Registrar" id="enviar" ><br><br>
 
         </form>
 
-        <script>
-    function emailVIP(){
-
-    var fd = new FormData();
-    fd.append( 'email', $("#email").val());
-
-        $.ajax({
-
-            url: 'ClientVerifyEnrollment.php',
-            data: fd,
-            processData: false,
-            contentType: false,
-            cache: false,
-            type: 'POST',
-            success: function(data){
-                $('#vipEmail').html(data);
-            }
-        });
-    }
-
-    function validarPass(){
-        var fd = new FormData();
-        fd.append( 'password', $("#password").val());
-
-            $.ajax({
-
-                url: 'ClientVerifyPass.php',
-                data: fd,
-                processData: false,
-                contentType: false,
-                cache: false,
-                type: 'POST',
-                success: function(data){
-                    console.log(data);
-                    $("#passValida").html(data);
-                }
-            });
-    }
-   
-        </script>
 
 
         <?php
@@ -152,9 +115,8 @@
         //Validacion de long de password
         if(strlen($password) < 6) return '<p style="color:red;"> La longitud del password debe ser mayor que 5 </p> <br>';
 
-        if ($emailVip == 'NO') return '<p style="color:red;"> El email tiene que ser VIP </p> <br>';
         
-        if($validPass == 'INVALIDA') return '<p style="color:red;"> La contraseña tiene que ser valida </p> <br>';
+
         $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
 
         if (!$mysqli){
