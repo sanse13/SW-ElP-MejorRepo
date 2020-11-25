@@ -12,10 +12,12 @@
 
         $datos = $soapclient->call('ObtenerPregunta', array('id'=>$id));
 
-        print_r($datos);
+        echo json_encode($datos);
+
+        //print_r($datos);
 
     }else{
-        print_r("Introduce un id");
+       // print_r("Introduce un id");
     }
 
 
