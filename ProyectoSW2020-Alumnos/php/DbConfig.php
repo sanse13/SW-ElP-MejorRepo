@@ -4,7 +4,7 @@
 
 $local=0; //1 para la nube
 
-if ($local==0){
+if ($local==1){
     $server="localhost";
     $user="root";
     $pass="";

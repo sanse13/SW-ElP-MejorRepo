@@ -7,10 +7,10 @@ $(document).ready(function(){
         if ($("#passMsg").text() == 'La contraseña es valida'){
             console.log("hoalaaa");
             return true;
-        } 
+        }
         else{
             return false;
-        } 
+        }
 
     });
 
@@ -31,9 +31,9 @@ function verifyPass(){
             $('#passMsg').remove();
             if(res == "VALIDA"){
                 $('#password').after('<p id ="passMsg" style="color: green;">La contraseña es valida</p>');
-            }else if (res == "INVALIDA") {
+            }else if (res == "INVALIDA" || res =='') {
                 $('#password').after('<p id ="passMsg" style="color: red;"> La contraseña no es valida </p>');
-            
+
             }else{
                 $('#password').after('<p id ="passMsg" style="color: orange;"> SIN SERVICIO </p>');
             }

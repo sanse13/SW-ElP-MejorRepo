@@ -1,19 +1,22 @@
 <?php
-
     require_once('../lib/nusoap.php');
     require_once('../lib/class.wsdlcache.php');
 
-    $url = 'http://localhost/SW-ElP-MejorRepo/ProyectoSW2020-Alumnos/php/GetQuestionWS.php?wsdl';
+    if(isset( $_POST['idPregunta'])){
 
-    $soapclient = new nusoap_client($url ,true);
-    
-    $id = $_POST['idPregunta'];
+        $url = 'https://lab0adri.000webhostapp.com/ProyectoSW2020-Alumnos/php/GetQuestionWS.php?wsdl';
 
-    $datos = $soapclient->call('ObtenerPregunta', array('id'=>$id));
+        $soapclient = new nusoap_client($url ,true);
 
-    if ($datos == '') print_r("Introduce un id");
+        $id = $_POST['idPregunta'];
 
-    else print_r($datos);
+        $datos = $soapclient->call('ObtenerPregunta', array('id'=>$id));
+
+        print_r($datos);
+
+    }else{
+        print_r("Introduce un id");
+    }
 
 
 ?>
