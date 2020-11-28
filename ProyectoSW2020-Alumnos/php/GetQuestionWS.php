@@ -22,13 +22,20 @@
     function ObtenerPregunta ($id){
 
         include "DbConfig.php";
-        $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
+        $mysqli = new mysqli($server, $user, $pass, $basededatos);
 
-        $query = "SELECT id, correo, enunciado, resOK FROM Preguntas WHERE id = $id";
+        $idS = $mysqli->real_escape_string($id);
 
-        $res = mysqli_query($mysqli, $query);
+        $query = "SELECT id, correo, enunciado, resOK FROM Preguntas WHERE id = ?";
 
-        $row = mysqli_fetch_array($res);
+        $stmt = $mysqli->prepare($query);
+
+        $stmt->bind_param('i', $idS);
+
+        $stmt->execute();
+
+        $res = $stmt->get_result();
+        $row =  $res->fetch_assoc();
 
         if($row){
 

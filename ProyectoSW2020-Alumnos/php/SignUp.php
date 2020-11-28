@@ -9,7 +9,7 @@
   require_once('../lib/nusoap.php');
   require_once('../lib/class.wsdlcache.php');
 
-  
+
   ?>
   <section class="main" id="s1">
     <div>
@@ -40,9 +40,9 @@
             <input type="password" size="50" id="password" name="password" ></p>
 
 
-            
 
-            
+
+
 
             <p><label for="repPassword"> Repetir Password: </label>
             <input type="password" size="50" id="repPassword" name="repPassword"></p><br>
@@ -115,18 +115,25 @@
         //Validacion de long de password
         if(strlen($password) < 6) return '<p style="color:red;"> La longitud del password debe ser mayor que 5 </p> <br>';
 
-        
 
-        $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
+
+        $mysqli = new mysqli($server, $user, $pass, $basededatos);
 
         if (!$mysqli){
             return '<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>';
         }
 
+        $email = $mysqli->real_escape_string($email);
 
-        $checkEmail = "SELECT Email FROM Usuarios WHERE Email = '$email'";
+        $stmt = $mysqli->prepare("SELECT Email FROM Usuarios WHERE Email = ?");
 
-        if (mysqli_query($mysqli, $checkEmail)->num_rows > 0)  exit('<p style="color:red;">Este email ya esta registrado</p> <br>');
+        $stmt->bind_param('s', $email);
+
+        $stmt->execute();
+
+        $checkEmail = $stmt->get_result();
+
+        if ($checkEmail->num_rows > 0)  exit('<p style="color:red;">Este email ya esta registrado</p> <br>');
 
         if(!empty($_FILES['imagenUser']['tmp_name'])){
 
@@ -141,21 +148,33 @@
         }
 
 
-        $query = "INSERT INTO Usuarios(Email, TipoUser, NombreApellidos, Pass, Imagen)
-                VALUES ('$email', '$tipoUser', '$nombeYApellidos', '$password', '$path')";
+        $hashPass = password_hash($password, PASSWORD_DEFAULT);
+
+        $email = $mysqli->real_escape_string($email);
+        $tipoUser = $mysqli->real_escape_string($tipoUser);
+        $nombeYApellidos = $mysqli->real_escape_string($nombeYApellidos);
+        $path = $mysqli->real_escape_string($path);
 
 
-        if(!mysqli_query($mysqli, $query)){
+        $query = "INSERT INTO Usuarios(Email, TipoUser, NombreApellidos, Pass, Imagen, Estado)
+                VALUES (?,?,?,?,?,'activo')";
+
+        $stmt = $mysqli->prepare($query);
+
+        $stmt->bind_param('sssss', $email, $tipoUser, $nombeYApellidos, $hashPass, $path);
+
+
+
+        if(!$stmt->execute()){
             return '<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>';
         }
 
 
 
-        mysqli_close($mysqli);
+        $mysqli->close();
 
         return "";
 
     }
 
 ?>
-

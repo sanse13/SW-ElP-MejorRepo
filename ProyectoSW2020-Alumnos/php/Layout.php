@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,24 +21,12 @@
 
 <?php
 
-  if(isset($_GET['logout'])){
-    echo("
+  if(isset($_SESSION['nombre'])){
+   /* echo("
       <script>
-        alert('Hasta la proxima:".$_GET['logout']."');
-        window.load = 'Layout.php';
+        alert('Bienvenido:".$_SESSION['nombre']."');
       </script>
-    ");
+    ");*/
 
   }
-
-  if(isset($_GET['nombre'])){
-    echo("
-      <script>
-        alert('Bienvenido:".$_GET['nombre']."');
-      </script>
-    ");
-
-  }
-
-
 ?>

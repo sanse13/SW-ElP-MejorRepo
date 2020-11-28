@@ -7,7 +7,7 @@ function showQuestions(){
 
         }
     }
-    xhttp.open("GET", "../xml/Questions.xml",);
+    xhttp.open("GET", "../xml/Questions.xml?_" + new Date().getTime());
     xhttp.send();
 
 }

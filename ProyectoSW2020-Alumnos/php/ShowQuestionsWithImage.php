@@ -1,3 +1,8 @@
+<?php
+  echo "<script>
+        window.location.href='Layout.php';
+      </script>";
+?>
 <!DOCTYPE html>
 <html>
 <head>

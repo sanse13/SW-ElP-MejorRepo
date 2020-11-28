@@ -1,67 +1,52 @@
-
 <script src="../js/DecreaseCounterAjax.js"></script>
 <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="../js/ShowImageInForm.js"></script>
-  <script src="../js/ShowQuestionsAjax.js"></script>
-  <script src="../js/AddQuestionsAjax.js"></script>
-  <script src="../js/CountQuestions.js"></script>
-  <script src="../js/CountUsersAjax.js"></script>
-
+<script src="../js/ShowQuestionsAjax.js"></script>
+<script src="../js/AddQuestionsAjax.js"></script>
+<script src="../js/CountQuestions.js"></script>
+<script src="../js/CountUsersAjax.js"></script>
 <?php
+    error_reporting(0);
+    if(isset($_SESSION['email'])){
 
-    if(isset($_GET['email'])){
+        $emailString = '"'.$_SESSION['email'].'"';
+        $email = $_SESSION['email'];
+        $tipoUser = $_SESSION['tipo'];
+        $imagen =  $_SESSION['imagen'];
 
-        include "DbConfig.php";
+        echo "<div id='page-wrap'>
+                <header class='main' id='h1'>
+                    <span class='right'><a href='#' onclick='decreaseCounter($emailString)'>Logout</a></span>
+                    <span class='right'> $email</span>
+                    <img src='$imagen' width='50px' height='50px'>
 
-        $urlEmail = "?email=" . $_GET['email'];
-        $email =  '"'.$_GET['email'].'"';
-        $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
-        $query = "SELECT Imagen, TipoUser FROM Usuarios WHERE Email = '$_GET[email]'";
-        $res = mysqli_query($mysqli, $query);
-        $path = mysqli_fetch_array($res);
+                </header>";
 
-        if($path['TipoUser'] == "profesor"){
-          echo("
-          <div id='page-wrap'>
-          <header class='main' id='h1'>
-              <span class='right'><a href='#' onclick='decreaseCounter(".$email.")'>Logout</a></span>
-              <span class='right'>". $_GET['email']."</span>
-              <img src='" . $path['Imagen'] . "' width='50px' height='50px'>
+        echo " <nav class='main' id='n1' role='navigation'>
+                  <span><a href='Layout.php'>Inicio</a></span>";
 
-          </header>
 
-          <nav class='main' id='n1' role='navigation'>
-            <span><a href='Layout.php".$urlEmail. "'>Inicio</a></span>
-            <span style='display:none'><a href='QuestionFormWithImage.php".$urlEmail. "'> Insertar Pregunta</a></span>
-            <span style='display:none'><a href='ShowQuestionsWithImage.php".$urlEmail. "'> Ver Preguntas</a></span>
-            <span style='display:none'><a href='ShowXmlQuestions.php".$urlEmail. "'> Ver Preguntas XML</a></span>
-            <span><a href='HandlingQuizesAjax.php".$urlEmail. "'> Gestionar preguntas </a></span>
-            <span><a href='GetQuestionData.php".$urlEmail. "'> Obtener Datos Pregunta </a></span>
-            <span><a href='Credits.php".$urlEmail. "'>Creditos</a></span>
-          </nav> ");
-        }else{
-          echo("
-          <div id='page-wrap'>
-          <header class='main' id='h1'>
-              <span class='right'><a href='#' onclick='decreaseCounter(".$email.")'>Logout</a></span>
-              <span class='right'>". $_GET['email']."</span>
-              <img src='" . $path['Imagen'] . "' width='50px' height='50px'>
+        if($tipoUser == "profesor"){
+          echo "<span><a href='HandlingQuizesAjax.php'> Gestionar preguntas </a></span>
+                <span><a href='GetQuestionData.php'> Obtener Datos Pregunta </a></span>";
+        }
 
-          </header>
-
-          <nav class='main' id='n1' role='navigation'>
-            <span><a href='Layout.php".$urlEmail. "'>Inicio</a></span>
-            <span style='display:none'><a href='QuestionFormWithImage.php".$urlEmail. "'> Insertar Pregunta</a></span>
-            <span style='display:none'><a href='ShowQuestionsWithImage.php".$urlEmail. "'> Ver Preguntas</a></span>
-            <span style='display:none'><a href='ShowXmlQuestions.php".$urlEmail. "'> Ver Preguntas XML</a></span>
-            <span><a href='HandlingQuizesAjax.php".$urlEmail. "'> Gestionar preguntas </a></span>
-            <span><a href='Credits.php".$urlEmail. "'>Creditos</a></span>
-          </nav> ");
+        if($tipoUser == "alumno"){
+          echo "<span><a href='HandlingQuizesAjax.php'> Gestionar preguntas </a></span>";
         }
 
 
-      }else{
+        if($tipoUser == "administrador"){
+          echo " <span><a href='HandlingAccounts.php'> Gestionar cuentas </a></span>";
+        }
 
+
+        echo "<span><a href='Credits.php'>Creditos</a></span>
+              </nav>";
+
+
+
+      }else{
 
         echo("
         <div id='page-wrap'>

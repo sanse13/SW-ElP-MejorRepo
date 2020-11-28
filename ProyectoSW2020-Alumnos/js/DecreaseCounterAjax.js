@@ -1,24 +1,3 @@
-/*$(document).ready(function(){
-
-    $(window).on("beforeunload", function() {
-        unloadUser();
-    })
-
-
-
-});
-
-
-function unloadUser(){
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var email = url.searchParams.get("email");
-    alert("holaaa");
-    decreaseCounter(email);
-}*/
-
-
-
 function decreaseCounter(email){
     var fd = new FormData();
     fd.append('email', email);

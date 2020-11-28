@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +23,10 @@
 
 
 <?php
-
-
-       echo "<script>
-                alert('Hasta Pronto ');
-                window.location.href='Layout.php';
-            </script>";
-
-
+      session_unset();
+      session_destroy();
+      echo "<script>
+          alert('Hasta Pronto ');
+          window.location.href='Layout.php';
+      </script>";
 ?>

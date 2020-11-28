@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if($_SESSION['tipo']!='profesor' && $_SESSION['tipo']!='alumno'){
+      echo "<script>
+              window.location.href='Layout.php';
+            </script>";
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +15,7 @@
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <form id='fquestion' name='fquestion' action=<?='AddQuestionWithImage.php?email='.$_GET['email']?> method="post" enctype="multipart/form-data">
-
-      <?php
-
-      $email = $_GET['email']; ?>
-
+    <form id='fquestion' name='fquestion'>
 
       <p style="background-color:#ff763a;" id="contadorUsuarios"></p>
       <p style="background-color:#62a2ff;" id="contadorQuestions"></p><br>

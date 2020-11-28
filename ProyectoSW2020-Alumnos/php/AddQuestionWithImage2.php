@@ -1,17 +1,30 @@
 <?php
-    header("Cache-Control: no-store");
-    $mensajeInsertarEnBD = insertarPreguntaBD();
-    $mensajeInsertarEnXML = insertarPreguntaXML();
+    session_start();
+    if($_SESSION['tipo'] == 'alumno' || $_SESSION['tipo'] == 'profesor'){
+      header("Cache-Control: no-store");
+      $mensajeInsertarEnBD = insertarPreguntaBD();
+      $mensajeInsertarEnXML = insertarPreguntaXML();
 
-    echo($mensajeInsertarEnBD);
-    echo($mensajeInsertarEnXML);
+      echo($mensajeInsertarEnBD);
+      echo($mensajeInsertarEnXML);
+    }else{
+        echo "<script>
+              window.location.href='Layout.php';
+            </script>";
 
+    }
 ?>
 <?php
 
 
     function insertarPreguntaBD(){
       include "DbConfig.php";
+      $mysqli = new mysqli($server, $user, $pass, $basededatos);
+
+      if (!$mysqli){
+        return "<p id='msgBD' style='color:red;'> Ha ocurrido un error inesperado </p>";
+      }
+
 
       $email = $_POST['email'];
       $pregunta = $_POST['pregunta'];
@@ -21,7 +34,20 @@
       $resIncorrecta3 = $_POST['resIncorrecta3'];
       $tema = $_POST['tema'];
       $complejidad = $_POST['complejidad'];
-      $urlBack = "?email=".$email;
+
+      $emailS = $mysqli->real_escape_string($email);
+      $preguntaS = $mysqli->real_escape_string($pregunta);
+      $resCorrectaS =$mysqli->real_escape_string($resCorrecta);
+      $resIncorrecta1S = $mysqli->real_escape_string($resIncorrecta1);
+      $resIncorrecta2S = $mysqli->real_escape_string($resIncorrecta2);
+      $resIncorrecta3S = $mysqli->real_escape_string($resIncorrecta3);
+      $temaS = $mysqli->real_escape_string($tema);
+      $complejidadS = $mysqli->real_escape_string($complejidad);
+
+      if($emailS!=$email || $preguntaS!=$pregunta || $resCorrectaS!=$resCorrecta || $resIncorrecta1S != $resIncorrecta1 || $resIncorrecta2S != $resIncorrecta2 || $resIncorrecta3S != $resIncorrecta3 || $temaS!=$tema || $complejidadS!=$complejidad){
+        return "<p id='msgBD' style='color:red;'> El formulario contiene caracteres no validos </p>";
+      }
+
 
 
       // Validacion de tipo de usuario
@@ -34,13 +60,6 @@
       //Validacion campos vacios
       if($email=="" || $pregunta=="" || $resCorrecta=="" || $resIncorrecta1=="" || $resIncorrecta2=="" || $resIncorrecta3=="" || $tema==""){
         return "<p id='msgBD' style='color:red;'> No puedes haber ningun campo vacio </p>";
-      }
-
-
-      $mysqli = mysqli_connect($server, $user, $pass, $basededatos);
-
-      if (!$mysqli){
-        return "<p id='msgBD' style='color:red;'> Ha ocurrido un error inesperado </p>";
       }
 
       if(!empty($_FILES['imagenPregunta']['tmp_name'])){
@@ -57,13 +76,18 @@
       }
 
       $query = "INSERT INTO Preguntas(correo, enunciado, resOK, resF1, resF2, resF3, tema, complejidad, imagen)
-              VALUES ('$email', '$pregunta', '$resCorrecta', '$resIncorrecta1', '$resIncorrecta2', '$resIncorrecta3', '$tema', '$complejidad', '$path')";
+              VALUES (?,?,?,?,?,?,?,?,?)";
 
-      if(!mysqli_query($mysqli, $query)){
-        return "<p id='msgBD' style='color:red;'>  Ha ocurrido un error inesperado </p>";
+
+      $stmt = $mysqli->prepare($query);
+
+      $stmt->bind_param('sssssssss', $emailS, $preguntaS, $resCorrectaS, $resIncorrecta1S, $resIncorrecta2S, $resIncorrecta3S, $temaS, $complejidadS, $path);
+
+      if(!$stmt->execute()){
+        return "<p id='msgBD' style='color:red;'>  Ha ocurrido un error inesperado2 </p>";
       }
 
-      mysqli_close($mysqli);
+      $mysqli->close();
 
       return "<p id='msgBD'> La pregunta se guarda correctamente en la Base de Datos</p><br>";
 
