@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['tipo']!='administrador'){
+    if(!isset($_SESSION['tipo']) || $_SESSION['tipo']!='administrador'){
       echo "<script>
               window.location.href='Layout.php';
             </script>";
@@ -33,7 +33,7 @@
           exit('<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>');
         }
 
-        echo '<table border=1 class="questionsTable"><tr> <th> Email </th> <th> Pass </th> <th> Imagen </th> <th> Estado </th> <th> Bloqueo </th><th> Borrar </th></tr>';
+        echo '<table border=1 class="questionsTable"><tr> <th> Email </th> <th> Pass </th> <th> Imagen </th> <th> Cambiar Estado </th> <th> Borrar </th><th> Estado </th></tr>';
 
         while ($row = mysqli_fetch_array($res)){
             $confirmBorrar = "'Estas seguro que quieres borrar a:".$row['Email']."'";

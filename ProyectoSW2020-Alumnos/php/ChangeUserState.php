@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['tipo'] == "administrador"){
+    if(isset($_SESSION['tipo']) && $_SESSION['tipo'] == "administrador"){
 
         include "DbConfig.php";
 

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['tipo'] == 'alumno' || $_SESSION['tipo'] == 'profesor'){
+    if(isset($_SESSION['tipo']) && ($_SESSION['tipo'] == 'alumno' || $_SESSION['tipo'] == 'profesor')){
       header("Cache-Control: no-store");
       $mensajeInsertarEnBD = insertarPreguntaBD();
       $mensajeInsertarEnXML = insertarPreguntaXML();

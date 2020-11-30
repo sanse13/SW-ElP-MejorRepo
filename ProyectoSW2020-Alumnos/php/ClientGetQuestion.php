@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['tipo'] == 'profesor'){
+    if(isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'profesor'){
         require_once('../lib/nusoap.php');
         require_once('../lib/class.wsdlcache.php');
 

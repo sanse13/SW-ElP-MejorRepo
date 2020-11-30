@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if($_SESSION['tipo']!='profesor'){
+  if(!isset($_SESSION['tipo']) || $_SESSION['tipo']!='profesor'){
     echo "<script>
             window.location.href='Layout.php';
           </script>";
