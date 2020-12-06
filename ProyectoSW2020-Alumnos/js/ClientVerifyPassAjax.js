@@ -5,7 +5,6 @@ $(document).ready(function(){
 
     $("#enviar").click(function (){
         if ($("#passMsg").text() == 'La contraseña es valida'){
-            console.log("hoalaaa");
             return true;
         }
         else{
