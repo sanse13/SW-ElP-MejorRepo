@@ -8,14 +8,22 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <meta name="google-signin-client_id" content="841174584082-uaggu8g2ogooj7fjemo2tuk9tkn1su6h.apps.googleusercontent.com">
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="../js/GoogleUserInfo.js"></script>
   <section class="main" id="s1">
+
     <div>
+
         <form method="post">
         <h2>Identificación de usuario </h2>
             <p> Email   : <input type="email"  name="email" size="21" value="" />
             <p> Password: <input type="password"  name="pass" size="21" value="" />
             <p> <input id="input_2" type="submit" name="submit" value="Login" /><br><br>
-            <p> <a href="RecoverPass.php">Restablecer contraseña</a></p>
+            <p> <a href="RecoverPass.php">Restablecer contraseña</a></p><br><br>
+            <div align='center' id='google' class='g-signin2' data-onsuccess='onSignIn'></div>  
+
         </form>
 
         <?php
