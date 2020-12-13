@@ -5,6 +5,9 @@
 <script src="../js/AddQuestionsAjax.js"></script>
 <script src="../js/CountQuestions.js"></script>
 <script src="../js/CountUsersAjax.js"></script>
+
+
+
 <?php
     error_reporting(0);
     if(isset($_SESSION['email'])){
@@ -50,6 +53,7 @@
 
         echo("
         <div id='page-wrap'>
+
         <header class='main' id='h1'>
           <span class='right'><a href='SignUp.php'>Registro</a></span>
             <span class='right'><a href='LogIn.php'>Login</a></span>
@@ -71,3 +75,4 @@
 
 
 ?>
+

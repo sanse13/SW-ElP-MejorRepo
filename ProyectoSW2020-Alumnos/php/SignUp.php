@@ -163,13 +163,9 @@
 
         $stmt->bind_param('sssss', $email, $tipoUser, $nombeYApellidos, $hashPass, $path);
 
-
-
         if(!$stmt->execute()){
             return '<p style="color:red;"> Ha ocurrido un error inesperado </p> <br> <a href="Layout.php"> Volver a la pagina principal </a>';
         }
-
-
 
         $mysqli->close();
 
