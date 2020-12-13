@@ -32,8 +32,8 @@ function onSignIn(googleUser){
         cache: true,
         type: 'POST',
         success: function(){
-          window.location.href="Layout.php";
           signOut();
+          window.location.href="Layout.php";
         }
     
     });
