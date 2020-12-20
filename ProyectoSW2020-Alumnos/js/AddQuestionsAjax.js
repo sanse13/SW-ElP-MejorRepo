@@ -11,6 +11,15 @@ function addQuestion(){
     fd.append( 'tema', $("#tema").val() );
     fd.append( 'complejidad',$("#complejidad").val() );
 
+    console.log($("#email").val());
+    console.log($("#pregunta").val());
+    console.log($("#resCorrecta").val());
+    console.log($("#resIncorrecta1").val());
+    console.log($("#resIncorrecta2").val());
+    console.log($("#resIncorrecta3").val());
+    console.log($("#tema").val());
+    console.log($("#complejidad").val());
+
 
 
 

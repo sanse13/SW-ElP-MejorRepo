@@ -56,7 +56,8 @@
 
         <header class='main' id='h1'>
           <span class='right'><a href='SignUp.php'>Registro</a></span>
-            <span class='right'><a href='LogIn.php'>Login</a></span>
+            <span class='right'><a href='LogIn.php'>Login o Login Social</a></span>
+          <span><a href='RecoverPass.php'>Restablecer contraseña</a></span>
             <span class='right'>Anonimo</span>
             <span class='right' style='display:none;'><a href='/logout'>Logout</a></span>
             <img src='../images/usuarios/anonimo.png' width='50px' height='50px'>
@@ -66,8 +67,8 @@
 
         <nav class='main' id='n1' role='navigation'>
           <span><a href='Layout.php'>Inicio</a></span>
-          <span><a href='RecoverPass.php'>Restablecer contraseña</a></span>
           <span><a href='Credits.php'>Creditos</a></span>
+          <span><a href='Play.php'>A jugar!</a></span>
         </nav> ");
 
       }

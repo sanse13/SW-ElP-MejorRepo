@@ -84,7 +84,7 @@
       $stmt->bind_param('sssssssss', $emailS, $preguntaS, $resCorrectaS, $resIncorrecta1S, $resIncorrecta2S, $resIncorrecta3S, $temaS, $complejidadS, $path);
 
       if(!$stmt->execute()){
-        return "<p id='msgBD' style='color:red;'>  Ha ocurrido un error inesperado2 </p>";
+        return "<p id='msgBD' style='color:red'>  Ha ocurrido un error inesperado </p>";
       }
 
       $mysqli->close();
