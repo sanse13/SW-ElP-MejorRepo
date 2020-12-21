@@ -40,3 +40,8 @@ nav span             				{ margin: 0px 10px 0px 0px;
 .questionsTable tr:first-child{
 	background: #cfa51b;
   }
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+  }

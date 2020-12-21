@@ -19,12 +19,15 @@
 
 
             echo "<p style='color:blue'>El resultado obtenido es: ".$_SESSION['correctas']." correctas y ".$_SESSION['incorrectas']." incorrectas</p>";
-            session_unset();
-            session_destroy(); 
+             
         
         ?>
 
+        <br><br><p>Introduce un nick para guardar tus resultados:</p> 
+        <input type="text" id="nick" name="nick"><br><br>
+        <input type="button" id="nick_button" name="nick_button" value="Guardar nick" onclick="guardarNick()">
         <input type="button" id="inicio" name="inicio" value="Volver a la página principal">
+        <br><label id="nick_guardado"></label>
             
 
         </form>
@@ -41,5 +44,30 @@
             window.location.href="Layout.php";
         });
 
+    
     });
+
+
+    function guardarNick(){
+        var fd = new FormData();
+            fd.append('nick', $("#nick").val());
+            $.ajax({
+                url: '../php/GuardarNick.php',
+                data: fd,
+                processData: false,
+                contentType: false,
+                cache: false,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                    if (data == "OK"){
+                        document.getElementById('nick_guardado').innerHTML = "<p style='color:green'>Nick guardado correctamente.</p>";
+                    } else {
+                        document.getElementById('nick_guardado').innerHTML = "<p style='color:red'>Nick repetido, introduce otro.</p>";
+                    }
+                }
+            });
+    }
+    
 </script>
+

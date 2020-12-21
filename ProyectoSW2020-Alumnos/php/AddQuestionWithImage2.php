@@ -53,7 +53,8 @@
       // Validacion de tipo de usuario
       $esAlumno = preg_match("/^[a-z]+\\d{3}@ikasle\.ehu\.(eus|es)$/", $email);
       $esProfesor = preg_match("/^([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email);
-      if(!($esAlumno || $esProfesor)){
+      $esSocial = preg_match("/^[a-z]*[.]*[a-z]*@gmail.(com|es)$/", $email);
+      if(!($esAlumno || $esProfesor || $esSocial)){
         return "<p id='msgBD' style='color:red;'> El email no es valido </p>";
       }
 
